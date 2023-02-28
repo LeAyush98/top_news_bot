@@ -30,10 +30,10 @@ tomato_texts = tomato.select(selector= "tr td span.titleline")
 tomato_text = []
 
 for _ in tomato_texts:
-    tomato_text.append((_.getText()))
+    tomato_text.append(((_.find(name="a").getText()),(_.find(name="a").get("href"))))
 
 tomato_dict = dict(zip(tomato_text, tomato_points))
 
 for text, point in tomato_dict.items():
     if point == max(tomato_points):
-        print(f"Article with most points ie {point} is: {text}")
+        print(f"Article with most points ({point}) is: {text[0]} and the link is: {text[1]} ")
